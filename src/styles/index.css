@@ -1,0 +1,244 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+input {
+  max-width: 500px;
+}
+
+.app {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.app__content {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  background-color: rgb(246,246,239);
+}
+
+.header {
+  white-space: nowrap;
+  padding: 1.25rem;
+  justify-content: space-between;
+  display: flex;
+  background-color: #1994ec;
+}
+
+.header__item {
+  display: flex;
+}
+
+.header__item_link {
+  text-decoration: none;
+  margin-left: .25rem;
+  color: white;
+}
+.header__item_sep {
+  margin-left: .25rem;
+}
+
+.submit__inputs {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.submit__input {
+  margin-bottom: .5rem;
+}
+
+.button {
+  font-family: monospace;
+  font-size: 10pt;
+  color: black;
+  background-color: buttonface;
+  text-align: center;
+  padding: 2px 6px 3px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: buttonface;
+  cursor: pointer;
+  max-width: 250px;
+}
+
+.post {
+  margin-top: .5rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.post__content {
+  margin-left: .25rem;
+}
+
+.post__content_comments {
+  padding: 20px;
+  padding-top: 0;
+}
+
+.post__number {
+  align-items: center;
+  display: flex;
+}
+
+.post__index, .post__vote, .post__stats {
+  color: gray;
+  font-size: 0.7rem;
+  padding-left: 0.7rem;
+}
+
+.post__vote {
+  font-size: 11px;
+  margin-left: .25rem;
+  cursor: pointer;
+}
+.post__comment_vote {
+  font-size: 9px;
+  margin-left: .25rem;
+  cursor: pointer;
+  color: gray;
+}
+.post__comment_index {
+  font-size: 0.8rem;
+}
+
+.post__stats {
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.post__description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.posts__pagination {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  color: gray;
+  display: flex;
+}
+
+.posts__pagination_btn {
+  cursor: pointer;
+}
+
+.posts__pagination_btn {
+  margin-right: .5rem;
+}
+.auth {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+.auth__form {
+  padding: 16px 12px;
+  border-bottom: 2px solid #e3e3e3;
+}
+.auth__form_input {
+  line-height: 24px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #c3c8ce;
+  border-radius: 4px;
+  width: 100%;
+  background-color: #fff;
+  color: #333f48;
+  margin-bottom: 0.75rem;
+}
+.auth__title {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.auth__form_inputs {
+  flex-direction: column;
+  display: flex;
+}
+.auth__form_controls {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+.header__mobile_icon {
+  display: none;
+}
+.post__comment {
+  align-items: flex-start;
+  display: flex;
+}
+.post__comment_btn {
+  cursor: pointer;
+  margin-right: 1rem;
+}
+.post__comment_text {
+  font-size: .900rem;
+}
+.post__comment_stats {
+  color: gray;
+  font-size: .750rem;
+  line-height: 1.5;
+}
+.post__comment_btn-editing {
+  color: lime;
+}
+.post__comment_content-edit {
+  min-width: 50px;
+  min-height: 25px;
+  max-width: 50vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .post__index {
+    font-size: 1rem;
+  }
+  .app__content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .auth {
+    width: 420px;
+  }
+  .post__comment_content-edit {
+    max-width: 85%;
+  }
+}
+@media (min-width: 1025px) {
+  .post__description {
+    max-width: 50rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header__item_left a:not(:first-child) {display: none;}
+  .header__item_right a {display: none;}
+  a.header__mobile_icon {
+    float: right;
+    display: block;
+  }
+  .header__item_sep {
+    margin-left: .25rem;
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .header__item.responsive {
+    display: block;
+    position: relative;
+  }
+  .header__item.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .header__item_right.responsive a,.header__item_left.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}

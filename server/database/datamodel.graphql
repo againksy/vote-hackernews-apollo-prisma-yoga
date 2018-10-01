@@ -1,0 +1,41 @@
+type Link {
+  id: ID! @unique
+  createdAt: DateTime!
+  description: String!
+  url: String!
+  postedBy: User
+  comments: [Comment!]!
+  votes: [Vote!]!
+}
+
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  password: String!
+  links: [Link!]!
+  votes: [Vote!]!
+  comments: [Comment!]!
+  comment_votes: [CommentVote!]!
+}
+
+type Vote {
+  id: ID! @unique
+  link: Link!
+  user: User!
+}
+
+type Comment {
+  createdAt: DateTime!
+  id: ID! @unique
+  link: Link!
+  user: User!
+  content: String!
+  comment_votes: [CommentVote!]!
+}
+
+type CommentVote {
+  id: ID! @unique
+  comment: Comment!
+  user: User!
+}
