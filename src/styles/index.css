@@ -181,6 +181,10 @@ input {
 }
 .post__comment_text {
   font-size: .900rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50vw;
+  word-wrap: break-word;
 }
 .post__comment_stats {
   color: gray;

@@ -108,6 +108,7 @@ class Link extends Component {
               </textarea>
             </div>}
           {authToken && <Mutation
+              onCompleted={this.showCommentField}
               mutation={COMMENT_MUTATION}
               variables={{ content: comment_content, linkId: link.id }}
               update={(store, { data: { comment } }) => {
