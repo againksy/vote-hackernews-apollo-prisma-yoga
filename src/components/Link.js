@@ -75,8 +75,8 @@ class Link extends Component {
                             this.props.updateStoreAfterCommentVote(store, commentVote, link.id, comment.id)
                           }
                         >
-                          {voteCommentMutation => (
-                            <div className="post__comment_vote" onClick={voteCommentMutation}>
+                          {commentVoteMutation => (
+                            <div className="post__comment_vote" onClick={commentVoteMutation}>
                               ▲
                             </div>
                           )}

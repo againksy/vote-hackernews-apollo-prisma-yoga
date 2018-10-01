@@ -214,12 +214,6 @@ export const COMMENT_MUTATION = gql`
     comment(linkId: $linkId, content: $content) {
       id
       link {
-        votes {
-          id
-          user {
-            id
-          }
-        }
         comments {
           createdAt
           id
@@ -267,6 +261,7 @@ export const COMMENT_VOTE_MUTATION = gql`
     commentVote(linkId: $linkId, commentId: $commentId) {
       id
       comment {
+        id
         comment_votes {
           id
           user {
