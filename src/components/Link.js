@@ -13,16 +13,14 @@ class Link extends Component {
   }
   showCommentField = () => {
     this.setState({
-      showCommentField: !this.state.showCommentField
+      showCommentField: !this.state.showCommentField,
+      comment_content: ''
     })
   }
   componentDidUpdate(prevProps, prevState){
     if(!prevState.showCommentField && this.state.showCommentField){
       this.commentArea.current.focus();
     }
-  }
-  focusCommentArea = () => {
-    this.commentArea.current.focus();
   }
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN)
