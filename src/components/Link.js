@@ -2,87 +2,27 @@ import React, { Component } from 'react'
 import { AUTH_TOKEN } from '../constants'
 import { timeDifferenceForDate } from '../utils'
 import { Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
+import { COMMENT_MUTATION, VOTE_MUTATION, COMMENT_VOTE_MUTATION } from '../tags'
 
-const COMMENT_MUTATION = gql`
-  mutation CommentMutation($content: String!, $linkId: ID!) {
-    comment(linkId: $linkId, content: $content) {
-      id
-      link {
-        votes {
-          id
-          user {
-            id
-          }
-        }
-        comments {
-          createdAt
-          id
-          user {
-            id
-            name
-          }
-          comment_votes {
-            id
-            user {
-              id
-            }
-          }
-          content
-        }
-      }
-      user {
-        id
-      }
-    }
-  }
-`
-const VOTE_MUTATION = gql`
-  mutation VoteMutation($linkId: ID!) {
-    vote(linkId: $linkId) {
-      id
-      link {
-        votes {
-          id
-          user {
-            id
-          }
-        }
-      }
-      user {
-        id
-      }
-    }
-  }
-`
-const COMMENT_VOTE_MUTATION = gql`
-  mutation VoteMutation($linkId: ID!, $commentId: ID!) {
-    commentVote(linkId: $linkId, commentId: $commentId) {
-      id
-      comment {
-        comment_votes {
-          id
-          user {
-            id
-          }
-        }
-      }
-      user {
-        id
-      }
-    }
-  }
-`
 
 class Link extends Component {
   constructor(props){
     super(props)
     this.state = {}
+    this.commentArea = React.createRef();
   }
   showCommentField = () => {
     this.setState({
       showCommentField: !this.state.showCommentField
     })
+  }
+  componentDidUpdate(prevProps, prevState){
+    if(!prevState.showCommentField && this.state.showCommentField){
+      this.commentArea.current.focus();
+    }
+  }
+  focusCommentArea = () => {
+    this.commentArea.current.focus();
   }
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN)
@@ -160,7 +100,7 @@ class Link extends Component {
             </div> : null
           }
           {showCommentField && <div>
-              <textarea rows="4" cols="50"
+              <textarea ref={this.commentArea} rows="4" cols="50"
                 className="post__comment_content-edit"
                 value={comment_content}
                 onChange={e => this.setState({ comment_content: e.target.value })}

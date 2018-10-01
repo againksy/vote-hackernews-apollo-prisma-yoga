@@ -209,3 +209,74 @@ export const NEW_COMMENT_VOTE_SUBSCRIPTION = gql`
   }
 `
 
+export const COMMENT_MUTATION = gql`
+  mutation CommentMutation($content: String!, $linkId: ID!) {
+    comment(linkId: $linkId, content: $content) {
+      id
+      link {
+        votes {
+          id
+          user {
+            id
+          }
+        }
+        comments {
+          createdAt
+          id
+          user {
+            id
+            name
+          }
+          comment_votes {
+            id
+            user {
+              id
+            }
+          }
+          content
+        }
+      }
+      user {
+        id
+      }
+    }
+  }
+`
+
+export const VOTE_MUTATION = gql`
+  mutation VoteMutation($linkId: ID!) {
+    vote(linkId: $linkId) {
+      id
+      link {
+        votes {
+          id
+          user {
+            id
+          }
+        }
+      }
+      user {
+        id
+      }
+    }
+  }
+`
+
+export const COMMENT_VOTE_MUTATION = gql`
+  mutation VoteMutation($linkId: ID!, $commentId: ID!) {
+    commentVote(linkId: $linkId, commentId: $commentId) {
+      id
+      comment {
+        comment_votes {
+          id
+          user {
+            id
+          }
+        }
+      }
+      user {
+        id
+      }
+    }
+  }
+`

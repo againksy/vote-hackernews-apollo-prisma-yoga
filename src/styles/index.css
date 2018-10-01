@@ -68,6 +68,7 @@ input {
   margin-top: .5rem;
   display: flex;
   align-items: flex-start;
+  padding-bottom: 1rem;
 }
 
 .post__content {
@@ -75,8 +76,7 @@ input {
 }
 
 .post__content_comments {
-  padding: 20px;
-  padding-top: 0;
+  padding-left: 20px;
 }
 
 .post__number {
@@ -188,7 +188,7 @@ input {
   line-height: 1.5;
 }
 .post__comment_btn-editing {
-  color: lime;
+  color: #98ff98;
 }
 .post__comment_content-edit {
   min-width: 50px;
