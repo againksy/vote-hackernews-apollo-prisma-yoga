@@ -14,7 +14,7 @@ import { split } from 'apollo-link'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 
-const uri = process.env.NODE_ENV_URI ? process.env.NODE_ENV_URI : 'localhost'
+const uri = process.env.REACT_APP_SERVER_URI ? process.env.REACT_APP_SERVER_URI : 'localhost'
 const httpLink = createHttpLink({
   uri: `http://${ uri }:4000`,
 })
