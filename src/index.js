@@ -14,8 +14,9 @@ import { split } from 'apollo-link'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 
+const uri = process.env.NODE_ENV_URI ? process.env.NODE_ENV_URI : 'localhost'
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000',
+  uri: `http://${ uri }:4000`,
 })
 
 const authLink = setContext((_, { headers }) => {
@@ -29,7 +30,7 @@ const authLink = setContext((_, { headers }) => {
 })
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000`,
+  uri: `ws://${ uri }:4000`,
   options: {
     reconnect: true,
     connectionParams: {
