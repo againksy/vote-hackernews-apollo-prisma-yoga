@@ -181,6 +181,17 @@ input {
   cursor: pointer;
   margin-right: 1rem;
 }
+.post_comment_btn-close:hover {
+  color: #ff7f7f;
+}
+.post__comment_btn:hover {
+  transform: scale(1.2);
+}
+.post__comment_btn.fa-comment:hover {
+  color: #b8eab8;
+  animation: none;
+}
+
 .post__comment_text {
   font-size: .900rem;
   overflow: hidden;
@@ -194,7 +205,38 @@ input {
   line-height: 1.5;
 }
 .post__comment_btn-editing {
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(140, 204,44, 0.4);
+  animation: pulse 2s infinite;
   color: #98ff98;
+}
+.post__comment_btn.fa-comment.post__comment_btn-editing:hover {
+  color: #98ff98;
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(140, 204, 44, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(140, 204, 44, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(140, 204,44, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(140, 204,44, 0.4);
+    box-shadow: 0 0 0 0 rgba(140, 204,44, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(140, 204,44, 0);
+    box-shadow: 0 0 0 10px rgba(140, 204,44, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(140, 204,44, 0);
+    box-shadow: 0 0 0 0 rgba(140, 204,44, 0);
+  }
 }
 .post__comment_content-edit {
   min-width: 50px;
