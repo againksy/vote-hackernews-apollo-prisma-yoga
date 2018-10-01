@@ -100,6 +100,9 @@ input {
   margin-left: .25rem;
   cursor: pointer;
   color: gray;
+  padding-top: 0.5rem;
+  display: inline;
+  margin-right: .25rem;
 }
 .post__comment_index {
   font-size: 0.8rem;
