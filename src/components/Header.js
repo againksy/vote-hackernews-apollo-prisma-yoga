@@ -53,7 +53,6 @@ class Header extends Component {
           <a className="header__mobile_icon" onClick={e => {
               e.preventDefault()
               if (header__item_Class === "header__item") {
-                header__item_Class += " responsive";
               } else {
                 header__item_Class = "header__item";
               }

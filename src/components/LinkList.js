@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Link from './Link'
 import { Query } from 'react-apollo'
 import { LINKS_PER_PAGE } from '../constants'
-import { FEED_QUERY, NEW_LINKS_SUBSCRIPTION, NEW_COMMENTS_SUBSCRIPTION, NEW_VOTES_SUBSCRIPTION, NEW_COMMENT_VOTE_SUBSCRIPTION, } from '../tags'
+import { FEED_QUERY, NEW_LINKS_SUBSCRIPTION, NEW_COMMENTS_SUBSCRIPTION, NEW_VOTES_SUBSCRIPTION, NEW_COMMENT_VOTE_SUBSCRIPTION, } from '../queries'
 
 class LinkList extends Component {
   _updateCacheAfterVote = (store, createVote, linkId) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { AUTH_TOKEN } from '../constants'
 import { timeDifferenceForDate } from '../utils'
 import { Mutation } from 'react-apollo'
-import { COMMENT_MUTATION, VOTE_MUTATION, COMMENT_VOTE_MUTATION } from '../tags'
+import { COMMENT_MUTATION, VOTE_MUTATION, COMMENT_VOTE_MUTATION } from '../queries'
 
 
 class Link extends Component {
