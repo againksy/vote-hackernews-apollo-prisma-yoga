@@ -70,6 +70,9 @@ async function vote(parent, args, context, info) {
 
 async function comment(parent, args, context, info) {
   const userId = getUserId(context)
+  if(!args.content){
+    throw new Error(`Unable to create comment with no text`)
+  }
   return context.db.mutation.createComment(
     {
       data: {

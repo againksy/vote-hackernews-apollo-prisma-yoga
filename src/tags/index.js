@@ -242,6 +242,7 @@ export const VOTE_MUTATION = gql`
     vote(linkId: $linkId) {
       id
       link {
+        id
         votes {
           id
           user {

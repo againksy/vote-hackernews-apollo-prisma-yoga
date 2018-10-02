@@ -62,29 +62,30 @@ class Link extends Component {
               : 'Unknown'}{' '}
             {timeDifferenceForDate(link.createdAt)}
           </div>
-          {link.comments && link.comments.length ? <div className="post__content_comments">
+          {link.comments && link.comments.length ? <ul className="post__content_comments">
               {link.comments.map((comment,index)=>{
-                return <div className="post__comment" key={index}>
-                    <div className="post__comment_number">
-                      <span className="post__comment_index">{index + 1}.</span>
-                      {authToken && (
-                        <Mutation
-                          mutation={COMMENT_VOTE_MUTATION}
-                          variables={{ linkId: link.id, commentId: comment.id }}
-                          update={(store, { data: { commentVote } }) =>
-                            this.props.updateStoreAfterCommentVote(store, commentVote, link.id, comment.id)
-                          }
-                        >
-                          {commentVoteMutation => (
-                            <div className="post__comment_vote" onClick={commentVoteMutation}>
-                              ▲
-                            </div>
-                          )}
-                        </Mutation>
-                      )}
-                    </div>
-                    <div>
-                      <div className="post__comment_text">{comment.content}</div>
+                let c_content = comment.content
+                if(!comment.content){
+                  c_content = '?'
+                }
+                return <li className="post__comment" key={index}>
+                    {authToken && (
+                      <Mutation
+                        mutation={COMMENT_VOTE_MUTATION}
+                        variables={{ linkId: link.id, commentId: comment.id }}
+                        update={(store, { data: { commentVote } }) =>
+                          this.props.updateStoreAfterCommentVote(store, commentVote, link.id, comment.id)
+                        }
+                      >
+                        {commentVoteMutation => (
+                          <div className="post__comment_vote" onClick={commentVoteMutation}>
+                            ▲
+                          </div>
+                        )}
+                      </Mutation>
+                    )}
+                    <div className="post__comment_body">
+                      <div className="post__comment_text">{c_content}</div>
                       <div className="post__comment_stats">
                         {comment.comment_votes && comment.comment_votes.length} votes | by{' '}
                         {comment.user
@@ -93,9 +94,9 @@ class Link extends Component {
                         {timeDifferenceForDate(comment.createdAt)}
                       </div>
                     </div>
-                  </div>
+                  </li>
               })}
-            </div> : null
+            </ul> : null
           }
           {showCommentField && <div>
               <textarea ref={this.commentArea} rows="4" cols="50"
@@ -116,7 +117,7 @@ class Link extends Component {
             >
               {commentMutation => (
                 <i onClick={()=>{
-                    if(showCommentField){
+                    if(showCommentField && comment_content){
                       commentMutation()
                     }else {
                       this.showCommentField()

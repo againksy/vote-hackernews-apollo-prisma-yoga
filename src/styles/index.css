@@ -78,7 +78,9 @@ input {
 }
 
 .post__content_comments {
+  list-style: none outside;
   padding-left: 20px;
+  font-size: 0.7rem;
 }
 
 .post__number {
@@ -98,6 +100,7 @@ input {
   cursor: pointer;
 }
 .post__comment_vote {
+  float: left;
   font-size: 9px;
   margin-left: .25rem;
   cursor: pointer;
@@ -174,8 +177,8 @@ input {
   display: none;
 }
 .post__comment {
-  align-items: flex-start;
-  display: flex;
+  /* align-items: flex-start; */
+  /* display: flex; */
 }
 .post__comment_btn {
   cursor: pointer;
@@ -239,9 +242,10 @@ input {
   }
 }
 .post__comment_content-edit {
+  padding: 5px;
   min-width: 50px;
   min-height: 25px;
-  max-width: 50vw;
+  max-width: 55vw;
 }
 
 @media only screen and (min-width: 768px) {
