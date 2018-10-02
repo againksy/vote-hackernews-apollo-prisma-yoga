@@ -1,30 +1,7 @@
 import React, { Component } from 'react'
 import { withApollo } from 'react-apollo'
-import gql from 'graphql-tag'
 import Link from './Link'
-
-const FEED_SEARCH_QUERY = gql`
-  query FeedSearchQuery($filter: String!) {
-    feed(filter: $filter) {
-      links {
-        id
-        url
-        description
-        createdAt
-        postedBy {
-          id
-          name
-        }
-        votes {
-          id
-          user {
-            id
-          }
-        }
-      }
-    }
-  }
-`
+import { FEED_SEARCH_QUERY } from '../queries'
 
 class Search extends Component {
   state = {
@@ -34,17 +11,20 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="searching">
+        <form onSubmit={e=>{
+              e.preventDefault();
+              this._executeSearch()
+            }}>
           Search
           <input
             type="text"
             onChange={e => this.setState({ filter: e.target.value })}
           />
-          <button onClick={() => this._executeSearch()}>OK</button>
-        </div>
+          <button className="searching_btn" type="submit">OK</button>
+        </form>
         {this.state.links.map((link, index) => (
-          <Link key={link.id} link={link} index={index} />
+          <Link disableAddComment={true} key={link.id} link={link} index={index} />
         ))}
       </div>
     )

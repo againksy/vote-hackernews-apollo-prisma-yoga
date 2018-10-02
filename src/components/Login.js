@@ -33,50 +33,56 @@ class Login extends Component {
       <div className="auth">
         <h4 className="auth__title">{login ? 'Sign in' : 'Sign Up'}</h4>
         <div className="auth__form">
-          <div className="auth__form_inputs">
-            {!login && (
-              <input
-                className="auth__form_input"
-                value={name}
-                onChange={e => this.setState({ name: e.target.value })}
-                type="text"
-                placeholder="Your name"
-              />
-            )}
-            <input
-              className="auth__form_input"
-              value={email}
-              onChange={e => this.setState({ email: e.target.value })}
-              type="text"
-              placeholder="Your email address"
-            />
-            <input
-              className="auth__form_input"
-              value={password}
-              onChange={e => this.setState({ password: e.target.value })}
-              type="password"
-              placeholder="Choose a safe password"
-            />
-          </div>
-          <div className="auth__form_controls">
-            <Mutation
+          <Mutation
               mutation={login ? LOGIN_MUTATION : SIGNUP_MUTATION}
               variables={{ email, password, name }}
               onCompleted={data => this._confirm(data)}
             >
-              {mutation => (
-                <div className="pointer mr2 button" onClick={mutation}>
-                  {login ? 'Login' : 'Register an Account'}
+              {loginMutation => (
+                <form onSubmit={e=>{
+                    e.preventDefault();
+                    loginMutation()
+                  }} className="auth__form_inputs">
+                {!login && (
+                  <input
+                    className="auth__form_input"
+                    value={name}
+                    onChange={e => this.setState({ name: e.target.value })}
+                    type="text"
+                    placeholder="Your name"
+                    required={true}
+                  />
+                )}
+                <input
+                  className="auth__form_input"
+                  value={email}
+                  onChange={e => this.setState({ email: e.target.value })}
+                  type="email"
+                  placeholder="Your email address"
+                  required={true}
+                />
+                <input
+                  className="auth__form_input"
+                  value={password}
+                  onChange={e => this.setState({ password: e.target.value })}
+                  type="password"
+                  placeholder="Choose a safe password"
+                  required={true}
+                />
+                <div className="auth__form_controls">
+                  <button type="submit" className="af__controls_button">
+                    {login ? 'Login' : 'Register an Account'}
+                  </button>
+                  <button
+                    className="af__controls_button"
+                    onClick={() => this.setState({ login: !login })}
+                  >
+                    {login ? 'Need to create an account?' : 'Already have an account?'}
+                  </button>
                 </div>
-              )}
-            </Mutation>
-            <div
-              className="pointer button"
-              onClick={() => this.setState({ login: !login })}
-            >
-              {login ? 'Need to create an account?' : 'Already have an account?'}
-            </div>
-          </div>
+              </form>
+            )}
+          </Mutation>
         </div>
       </div>
     )

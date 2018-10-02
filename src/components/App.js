@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        <div className="app__content">
+        <section className="app__content">
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/new/1" />} />
             <Route exact path="/create" component={CreateLink} />
@@ -20,7 +20,7 @@ class App extends Component {
             <Route exact path="/top" component={LinkList} />
             <Route exact path="/new/:page" component={LinkList} />
           </Switch>
-        </div>
+        </section>
       </div>
     )
   }

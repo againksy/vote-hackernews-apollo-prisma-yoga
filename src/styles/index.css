@@ -42,17 +42,24 @@ input {
   margin-left: .25rem;
 }
 
-.submit__inputs {
+.createpost__form {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
 
-.submit__input {
+.createpost__form_input {
   margin-bottom: .5rem;
 }
+.createpost__form_submit {
+  max-width: 5rem;
+  cursor: pointer;
+}
+.searching_btn {
+  cursor: pointer;
+}
 
-.button {
+.af__controls_button {
   font-family: monospace;
   font-size: 10pt;
   color: black;
@@ -64,6 +71,7 @@ input {
   border-color: buttonface;
   cursor: pointer;
   max-width: 250px;
+  cursor: pointer;
 }
 
 .post {
@@ -148,6 +156,8 @@ input {
 .auth__form {
   padding: 16px 12px;
   border-bottom: 2px solid #e3e3e3;
+  width: 70vw;
+  margin: 0 auto;
 }
 .auth__form_input {
   line-height: 24px;
@@ -261,9 +271,17 @@ input {
   .post__comment_content-edit {
     max-width: 85%;
   }
+  .auth__form {
+    width: initial;
+  }
 }
 @media (min-width: 1025px) {
   .post__description {
     max-width: 50rem;
+  }
+}
+@media (max-width: 1024px) {
+  .createpost__form_submit {
+    border: initial;
   }
 }

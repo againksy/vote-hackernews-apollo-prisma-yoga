@@ -13,8 +13,8 @@ class Header extends Component {
     let { header__item_Class } = this.state
     const authToken = localStorage.getItem(AUTH_TOKEN)
     return (
-      <div className="header">
-        <div className={`${header__item_Class} header__item_left`}>
+      <header className="header">
+        <nav className={`${header__item_Class} header__item_left`}>
           <Link to="/" className="header__item_link">
             new
           </Link>
@@ -32,7 +32,7 @@ class Header extends Component {
                 submit
               </Link>
             </div>)}
-        </div>
+        </nav>
         <div className={`${header__item_Class} header__item_right`}>
           {authToken ? (
             <div
@@ -60,7 +60,7 @@ class Header extends Component {
             }} >
             <i className="fa fa-bars"></i>
           </a>
-      </div>
+      </header>
     )
   }
 }

@@ -24,23 +24,7 @@ class CreateLink extends Component {
   render() {
     const { description, url } = this.state
     return (
-      <div className="submit">
-        <div className="submit__inputs">
-          <input
-            className="submit__input"
-            value={description}
-            onChange={e => this.setState({ description: e.target.value })}
-            type="text"
-            placeholder="A description for the link"
-          />
-          <input
-            className="submit__input"
-            value={url}
-            onChange={e => this.setState({ url: e.target.value })}
-            type="text"
-            placeholder="The URL for the link"
-          />
-        </div>
+      <div className="createpost">
         <Mutation
           mutation={POST_MUTATION}
           variables={{ description, url }}
@@ -60,8 +44,27 @@ class CreateLink extends Component {
               variables: { first, skip, orderBy },
             })
           }}
-        >
-          {postMutation => <button onClick={postMutation}>Submit</button>}
+        >{postMutation => 
+          <form className="createpost__form" onSubmit={e=>{
+              e.preventDefault();
+              postMutation()
+            }}>
+            <input
+              className="createpost__form_input"
+              value={description}
+              onChange={e => this.setState({ description: e.target.value })}
+              type="text"
+              placeholder="A description for the link"
+            />
+            <input
+              className="createpost__form_input"
+              value={url}
+              onChange={e => this.setState({ url: e.target.value })}
+              type="text"
+              placeholder="The URL for the link"
+             />
+             <button className="createpost__form_submit" type="submit">Submit</button>
+          </form>}
         </Mutation>
       </div>
     )

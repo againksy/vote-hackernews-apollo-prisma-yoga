@@ -106,7 +106,7 @@ class Link extends Component {
               >
               </textarea>
             </div>}
-          {authToken && <Mutation
+          {authToken && !this.props.disableAddComment && <Mutation
               onCompleted={this.showCommentField}
               mutation={COMMENT_MUTATION}
               variables={{ content: comment_content, linkId: link.id }}
