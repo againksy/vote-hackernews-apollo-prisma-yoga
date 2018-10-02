@@ -267,31 +267,3 @@ input {
     max-width: 50rem;
   }
 }
-
-@media screen and (max-width: 600px) {
-  /* .header__item_left a:not(:first-child) {display: none;} */
-  /* .header__item_right a {display: none;} */
-  a.header__mobile_icon {
-    /* float: right; */
-    /* display: block; */
-  }
-  .header__item_sep {
-    /* display: none; */
-  }
-}
-@media screen and (max-width: 600px) {
-  /* .header__item.responsive { */
-  /*   display: block; */
-  /*   position: relative; */
-  /* } */
-  /* .header__item.responsive .icon { */
-  /*   position: absolute; */
-  /*   right: 0; */
-  /*   top: 0; */
-  /* } */
-  /* .header__item_right.responsive a,.header__item_left.responsive a { */
-  /*   float: none; */
-  /*   display: block; */
-  /*   text-align: left; */
-  /* } */
-}
